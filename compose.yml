@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_ENV: dev
+    ports:
+      - "3003:3000"
+
+  backend:
+    build: ./backend
+    ports:
+      - "4400:80"
+    environment:
+      - MONGO_URI=mongodb://db:27017/db_stage
+
+  db:
+    image: mongo
+    container_name: mongo_dev
+    ports:
+      - "27019:27017"
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
