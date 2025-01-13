@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  backend:
+    build: .
+    ports:
+      - "4400:80"
+    environment:
+      - MONGO_URI=mongodb://db:27017/db_dev
+
+  db:
+    image: mongo
+    container_name: mongo_dev
+    ports:
+      - "27019:27017"
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
