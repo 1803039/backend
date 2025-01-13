@@ -1,0 +1,19 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - Dev
+      - Stage
+      - Prod
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          docker compose -f compose.yml up --build -d
