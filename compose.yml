@@ -9,7 +9,7 @@ services:
       - "3003:3000"
 
   backend:
-    build: ./backend
+    build: ./
     ports:
       - "4400:80"
     environment:
