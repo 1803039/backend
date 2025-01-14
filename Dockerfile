@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
+# Ensure the .env file is included (copied from the correct branch)
+COPY .env .env
+
 # Expose the port
 EXPOSE 3000
 
