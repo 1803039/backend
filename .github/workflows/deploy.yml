@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Local Deploy
 
 on:
   push:
@@ -13,7 +13,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}     
 
-      - name: Build Docker image
+      - name: Local server Deployment
         run: |
-          docker compose -f compose.yml up --build -d
+          ssh -o StrictHostKeyChecking=no sadman-sajid@172.16.2.192 << 'EOF'
+            cd /home/sadman-sajid/firstapp
+            git fetch --all
+            git checkout ${{ github.ref_name }}
+            docker compose down
+            docker compose up -d --build
+          EOF
