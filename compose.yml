@@ -2,6 +2,7 @@ version: "3.8"
 services:
   backend:
     build: .
+    container_name: stage_back
     ports:
       - "5500:3000"
     environment:
