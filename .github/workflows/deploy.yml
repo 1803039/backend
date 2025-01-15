@@ -1,4 +1,4 @@
-name: Local Deploy
+name: Local Deploy Dev
 
 on:
   push:
