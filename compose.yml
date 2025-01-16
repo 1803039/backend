@@ -27,4 +27,4 @@ volumes:
 
 networks:
   dev_net: # Define a docker network
-    external: true
+    driver: bridge
