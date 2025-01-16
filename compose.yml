@@ -26,5 +26,5 @@ volumes:
   db_data:
 
 networks:
-  dev_net: # Define a network
+  dev_net: # Define a docker network
     external: true
