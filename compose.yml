@@ -9,6 +9,8 @@ services:
       - MONGO_URI=mongodb://mongo_dev:27020/db_dev
     depends_on:
       - db
+    networks:
+      - dev_net
 
   db:
     image: mongo
@@ -17,6 +19,12 @@ services:
       - "27020:27017"
     volumes:
       - db_data:/data/db
+    networks:
+      - dev_net
 
 volumes:
   db_data:
+
+networks:
+  dev_net: # Define a network
+    external: true
