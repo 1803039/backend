@@ -6,7 +6,7 @@ services:
     ports:
       - "4400:3000"
     environment:
-      - MONGO_URI=mongodb://mongo_dev:27017/db_dev
+      - MONGO_URI=mongodb://db:27017/db_dev
     depends_on:
       - db
     networks:
@@ -22,9 +22,9 @@ services:
     networks:
       - dev_net
 
-volumes:
-  db_data:
-
 networks:
   dev_net: # Define a docker network
-    driver: bridge
+    external: true
+
+volumes:
+  db_data:
