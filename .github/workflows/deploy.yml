@@ -21,4 +21,6 @@ jobs:
           cd /home/sadman-sajid/firstapp/backend  # local project directory
           git fetch --all
           git checkout ${{ github.ref_name }}
-          docker compose up -d --build
+          docker compose down
+          docker compose build
+          docker compose up -d
