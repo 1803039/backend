@@ -1,4 +1,4 @@
-name: Local Deploy Stage back
+name: Local Deploy Prod back
 
 on:
   push:
@@ -21,6 +21,7 @@ jobs:
           cd /home/sadman-sajid/firstapp/backend  # local project directory
           git fetch --all
           git checkout ${{ github.ref_name }}
-          docker compose down
+          docker compose stop backend-prod
+          docker compose rm backend-prod
           docker compose build
           docker compose up -d
