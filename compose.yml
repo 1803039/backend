@@ -2,18 +2,11 @@ version: "3.8"
 services:
   backend:
     build: .
+    container_name: prod_back
     ports:
       - "6600:3000"
     environment:
-      - MONGO_URI=mongodb://db:27017/db_prod
-
-  db:
-    image: mongo
-    container_name: mongo_prod
-    ports:
-      - "27022:27017"
-    volumes:
-      - db_data:/data/db
+      - MONGO_URI=mongodb://172.16.2.192:27017/db_prod
 
 volumes:
   db_data:

@@ -1,0 +1,26 @@
+name: Local Deploy Stage back
+
+on:
+  push:
+    branches:
+      - Dev
+      - Stage
+      - Prod
+  
+jobs:
+  build:
+    runs-on: [self-hosted, Linux, X64]
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: docker/setup-buildx-action@v2    
+
+      - name: Local server Deployment
+        run: |
+          cd /home/sadman-sajid/firstapp/backend  # local project directory
+          git fetch --all
+          git checkout ${{ github.ref_name }}
+          docker compose down
+          docker compose build
+          docker compose up -d
