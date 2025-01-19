@@ -20,10 +20,13 @@ mongoose.connect(MONGO_URI, {
   .catch(err => console.log(err));
 
 // Define User schema
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema(
+    {
     username: String,
     password: String,
-});
+    },
+    { collection: 'db_prod' }
+);
 
 const User = mongoose.model('User', userSchema);
 
