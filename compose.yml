@@ -6,11 +6,7 @@ services:
     ports:
       - "4400:3000"
     environment:
-      - MONGO_URI=mongodb://172.16.2.192:27020/db_dev
-    depends_on:
-      - db
-    networks:
-      - dev_net
+      - MONGO_URI=mongodb://172.16.2.192:27017/db_dev
 
   db:
     image: mongo
@@ -19,12 +15,6 @@ services:
       - "27020:27017"
     volumes:
       - db_data:/data/db
-    networks:
-      - dev_net
-
-networks:
-  dev_net: # Define a docker network
-    external: true
 
 volumes:
   db_data:
