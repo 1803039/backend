@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  backend:
+  backend-stage:
     build: .
     container_name: stage_back
     ports:
