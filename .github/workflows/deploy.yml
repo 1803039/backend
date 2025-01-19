@@ -1,4 +1,4 @@
-name: Local Deploy Stage backend
+name: Local Deploy Stage back
 
 on:
   push:
